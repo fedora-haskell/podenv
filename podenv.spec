@@ -9,12 +9,11 @@
 
 Name:           podenv
 Version:        0.1.0.0
-Release:        0.20210920gitbef8daa
+Release:        0.20210922
 Summary:        A podman wrapper
 
 License:        ASL 2.0
 Url:            https://github.com/podenv/podenv
-Patch0:         podenv-dhall-lowerbound.patch
 
 # Begin cabal-rpm deps:
 BuildRequires:  ghc-Cabal-devel
@@ -51,7 +50,6 @@ git clone https://github.com/podenv/podenv.git
 %setup -q -D -T -n podenv
 git submodule init
 git submodule update
-%patch0 -p1 -b .orig
 fi
 
 
@@ -81,5 +79,5 @@ mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
 
 
 %changelog
-* Tue Sep 21 2021 Jens Petersen <petersen@redhat.com> - 0.1.0.0-1
+* Wed Sep 22 2021 Jens Petersen <petersen@redhat.com> - 0.1.0.0-0
 - initial packaging
