@@ -38,6 +38,7 @@ BuildRequires:  cabal-install > 1.18
 BuildRequires:  ghc-template-haskell-devel
 # End cabal-rpm deps
 BuildRequires:  git-core
+Requires:       podman
 
 %description
 Podenv provides a declarative interface to manage containerized application.
