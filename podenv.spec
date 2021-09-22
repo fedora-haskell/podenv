@@ -14,6 +14,7 @@ Summary:        A podman wrapper
 
 License:        ASL 2.0
 Url:            https://github.com/podenv/podenv
+Patch0:         podenv-dhall-lowerbound.patch
 
 # Begin cabal-rpm deps:
 BuildRequires:  ghc-Cabal-devel
@@ -50,6 +51,7 @@ git clone https://github.com/podenv/podenv.git
 %setup -q -D -T -n podenv
 git submodule init
 git submodule update
+%patch0 -p1 -b .orig
 fi
 
 
