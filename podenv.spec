@@ -9,7 +9,7 @@
 
 Name:           podenv
 Version:        0.1.0.0
-Release:        0.20210922
+Release:        0.20210923
 Summary:        A podman wrapper
 
 License:        ASL 2.0
@@ -80,5 +80,8 @@ mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
 
 
 %changelog
-* Wed Sep 22 2021 Jens Petersen <petersen@redhat.com> - 0.1.0.0-0
+* Thu Sep 23 2021 Jens Petersen <petersen@redhat.com>
+- update to be20ef4
+
+* Wed Sep 22 2021 Jens Petersen <petersen@redhat.com>
 - initial packaging
