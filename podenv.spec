@@ -74,6 +74,7 @@ mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
 # Begin cabal-rpm files:
 %license LICENSE
 %doc README.md
+%doc docs/*
 %{_bindir}/%{name}
 %{_datadir}/bash-completion/completions/%{name}
 # End cabal-rpm files
