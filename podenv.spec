@@ -9,11 +9,12 @@
 
 Name:           podenv
 Version:        0.1.0.0
-Release:        0.20210923
+Release:        0.20210923.1
 Summary:        A podman wrapper
 
 License:        ASL 2.0
 Url:            https://github.com/podenv/podenv
+Source:         %{name}-%{version}.tar.gz
 
 # Begin cabal-rpm deps:
 BuildRequires:  ghc-Cabal-devel
@@ -46,12 +47,7 @@ Using rootless containers, podenv let's you run applications seamlessly.
 
 
 %prep
-if [ ! -d podenv ]; then
-git clone https://github.com/podenv/podenv.git
-%setup -q -D -T -n podenv
-git submodule init
-git submodule update
-fi
+%setup -q
 
 
 %build
@@ -74,15 +70,17 @@ mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
 # Begin cabal-rpm files:
 %license LICENSE
 %doc README.md
-%doc docs/*
 %{_bindir}/%{name}
 %{_datadir}/bash-completion/completions/%{name}
 # End cabal-rpm files
 
 
 %changelog
-* Thu Sep 23 2021 Jens Petersen <petersen@redhat.com>
+* Thu Sep 23 2021 Jens Petersen <petersen@redhat.com> - 0.1.0.0-0.20210923.1
+- update to 87838f7 tarball
+
+* Thu Sep 23 2021 Jens Petersen <petersen@redhat.com> - 0.1.0.0-0.20210923
 - update to be20ef4
 
-* Wed Sep 22 2021 Jens Petersen <petersen@redhat.com>
+* Wed Sep 22 2021 Jens Petersen <petersen@redhat.com> - 0.1.0.0-0.20210922
 - initial packaging
