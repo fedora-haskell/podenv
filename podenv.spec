@@ -43,7 +43,9 @@ BuildRequires:  cabal-install > 1.18
 BuildRequires:  ghc-template-haskell-devel
 # for missing dep 'th-env':
 BuildRequires:  ghc-template-haskell-devel
+%if 0%{?fedora} >= 35
 BuildRequires:  ghc-th-compat-devel
+%endif
 # End cabal-rpm deps
 Requires:       podman
 
