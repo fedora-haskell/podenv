@@ -10,7 +10,7 @@
 
 Name:           podenv
 Version:        0.10.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        A container wrapper
 
 License:        Apache-2.0
@@ -22,6 +22,8 @@ Source2:        https://hackage.haskell.org/package/%{linuxcapabilities}/%{linux
 Source3:        https://hackage.haskell.org/package/%{thenv}/%{thenv}.tar.gz
 Source4:        https://hackage.haskell.org/package/%{withutf8}/%{withutf8}.tar.gz
 # End cabal-rpm sources
+# dhall <<< ./hub/Prelude.dhall > LocalPrelude.dhall (#173)
+Source10:       LocalPrelude.dhall
 
 # Begin cabal-rpm deps:
 BuildRequires:  ghc-rpm-macros-extra
@@ -74,8 +76,10 @@ Using rootless containers, podenv let you run applications seamlessly.
   cabal-tweak-dep-ver filepath '<1.5' '<1.6'
 )
 
+cp %SOURCE10 .
 
 %build
+export DHALL_PRELUDE=./LocalPrelude.dhall
 # Begin cabal-rpm build:
 %ghc_libs_build -P -H %{subpkgs}
 %ghc_bin_build
@@ -113,6 +117,9 @@ help2man --no-info %{buildroot}%{_bindir}/%{name} > %{buildroot}%{_mandir}/man1/
 
 
 %changelog
+* Sat Aug 01 2026 Jens Petersen <petersen@redhat.com> - 0.10.0-2
+- use DHALL_PRELUDE to avoid network during build
+
 * Tue Jul 28 2026 Jens Petersen <petersen@redhat.com> - 0.10.0-1
 - https://github.com/podenv/podenv/blob/v0.10.0/CHANGELOG.md
 
